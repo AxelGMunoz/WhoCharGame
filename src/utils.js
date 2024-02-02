@@ -38,12 +38,16 @@ export function getImage(n) {
     return images[n]
 }
 
+export function getName(n) {
+    return images[n].split(/(\\|\/)/g).pop().split('.')[0].replace('_',' ')
+}
+
 export function getNames() {
     let names = []
     for(let n=0;n<images.length;n++){
         names.push({
             value: n,
-            label: images[n].split(/(\\|\/)/g).pop().split('.')[0].replace('_',' ')
+            label: getName(n)
         })
     }
     const fakeNames = ['Prueba Jorge']

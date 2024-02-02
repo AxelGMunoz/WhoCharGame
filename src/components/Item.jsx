@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { UserContext } from "../Context"
-import { getActualPos, getColor, getImage, status } from "../utils"
+import { getActualPos, getColor, getImage, getName, status } from "../utils"
 import InpSelect from "./InpSelect"
 
 function Item ({ id }) {
@@ -35,6 +35,8 @@ function Item ({ id }) {
     }
 
     return(<div className="text-center items-center w-2/3 my-5 mx-auto p-5 rounded-lg shadow-md bg-slate-800/50 ring-1 ring-white/10">
+
+        {items[id].status != status.Unplayed && <h2 className="text-2xl font-semibold">{getName(id)}</h2>}
 
         <div className="flex w-8/12 h-[50vh] justify-center mt-2 mx-auto rounded-lg">
             <div className={`w-full h-full bg-cover bg-center rounded-lg`}
