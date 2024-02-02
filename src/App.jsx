@@ -5,13 +5,13 @@ import { getColor, getStatus } from "./utils"
 import { UserContext } from "./Context"
 
 function App() {
-  const { selItem, items } = useContext(UserContext)
+  const { selItem, items, resetAll } = useContext(UserContext)
 
   return (<>
   <div className="text-center">
     <h1 className="text-3xl font-bold">WhoCharGame</h1>
 
-    {selItem == 0 && <>
+    {selItem == -1 && <>
       <div className="flex items-center justify-center my-5">
         {getStatus().map(t=>
           <div key={t} className="flex items-center mx-2">
@@ -21,7 +21,7 @@ function App() {
             <span>{t}</span>
           </div>
         )}
-        <button className="btn btn-blue ml-10">RESET</button>
+        <button className="btn btn-blue ml-10" onClick={resetAll}>RESET</button>
       </div>
 
       <div className="grid grid-cols-4 gap-4">
@@ -31,7 +31,7 @@ function App() {
       </div>
     </>}
 
-    {selItem > 0 && <Item id={selItem} />}
+    {selItem >= 0 && <Item id={selItem} />}
     </div></>)
 }
 

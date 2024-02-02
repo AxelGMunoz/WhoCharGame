@@ -6,3 +6,4 @@ Tecnologías y librerias que utiliza:
 - Vite
 - React
 - TailwindCSS
+- react-select

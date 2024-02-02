@@ -15,3 +15,16 @@ body {
 .btn-blue:hover {
     @apply bg-blue-700;
 }
+
+/* BOOKMARK: Trabajo -> Ver */
+.react-select__control {
+    @apply !border-gray-600
+}
+
+.react-select__value-container {
+    @apply !bg-gray-700 rounded-l
+}
+
+.react-select__menu {
+    @apply !bg-gray-800
+}

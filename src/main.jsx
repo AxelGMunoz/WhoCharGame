@@ -5,9 +5,7 @@ import './index.css'
 import Context from './Context.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <Context>
       <App />
-    </Context>
-  </React.StrictMode>,
+    </Context>,
 )
