@@ -7,6 +7,9 @@ function Item ({ id }) {
     const { items, setSelItem, updateItemLocal } = useContext(UserContext)
 
     const setBlur = () => {
+        if(items[id].status == status.Success){
+            return ''
+        }
         let nn = 0
         for(let n = 0;n<items[id].try.length;n++){
             if(items[id].try[n] == status.Unplayed){
