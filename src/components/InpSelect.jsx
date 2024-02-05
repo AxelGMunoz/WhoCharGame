@@ -1,7 +1,7 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react'
 
-import Select from 'react-select';
-import { shuffle, getNames, status, getActualPos } from '../utils';
+import Select from 'react-select'
+import { shuffle, getNames, status, getActualPos } from '../utils'
 import { UserContext } from "../Context"
 
 function InpSelect({charID}) {
@@ -11,7 +11,7 @@ function InpSelect({charID}) {
 
   const { updateItemLocal } = useContext(UserContext)
 
-  const selectRef = useRef();
+  const selectRef = useRef()
 
   const selectChar = () => {
     if(!isLoading) {
@@ -23,19 +23,17 @@ function InpSelect({charID}) {
 
   useEffect(()=>{
     if (isLoading) {
-      setTimeout(function() {
-        setIsLoading(false)
-        setIsSearchable(true)
-        setIsDisabled(false)
-        const selChar = selectRef.current.getValue()[0].value
-        const localItem = JSON.parse(localStorage.getItem('items'))[charID]
-        if (selChar == charID) {
-          updateItemLocal(charID, getActualPos(localItem), status.Success)
-        }else{
-          updateItemLocal(charID, getActualPos(localItem), status.Failed)
-        }
-        selectRef.current.clearValue()
-      }, 1000)
+      const selChar = selectRef.current.getValue()[0].value
+      const localItem = JSON.parse(localStorage.getItem('items'))[charID]
+      if (selChar == charID) {
+        updateItemLocal(charID, getActualPos(localItem), status.Success)
+      }else{
+        updateItemLocal(charID, getActualPos(localItem), status.Failed)
+      }
+      selectRef.current.clearValue()
+      setIsLoading(false)
+      setIsSearchable(true)
+      setIsDisabled(false)
     }
   },[isLoading])
 
@@ -64,7 +62,7 @@ function InpSelect({charID}) {
           })}
       />
     </>
-  );
-};
+  )
+}
 
 export default InpSelect

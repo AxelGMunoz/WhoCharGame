@@ -3,13 +3,17 @@ import ItemGrid from "./components/ItemGrid"
 import Item from "./components/Item"
 import { getColor, getStatus } from "./utils"
 import { UserContext } from "./Context"
+import IconGame from "./assets/icon.svg"
 
 function App() {
   const { selItem, items, resetAll } = useContext(UserContext)
 
   return (<>
   <div className="text-center">
-    <h1 className="text-3xl font-bold">WhoCharGame</h1>
+    <div className="flex items center justify-center gap-2">
+      <img src={IconGame} alt="Icon game WhoCharGame" />
+      <h1 className="text-3xl font-bold">WhoCharGame</h1>
+    </div>
 
     {selItem == -1 && <>
       <div className="flex items-center justify-center my-5">
