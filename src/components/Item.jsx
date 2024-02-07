@@ -7,31 +7,14 @@ function Item ({ id }) {
     const { items, setSelItem, updateItemLocal } = useContext(UserContext)
 
     const setBlur = () => {
-        if(items[id].status == status.Success){
-            return ''
-        }
-        let nn = 0
-        for(let n = 0;n<items[id].try.length;n++){
+        let n
+        for(n = 0;n<items[id].try.length;n++){
             if(items[id].try[n] == status.Unplayed){
                 break
             }
-            nn++
         }
-        const ext = 'backdrop-blur'
-        switch(nn){
-            case 0:
-                return ext+'-xl'
-            case 1:
-                return ext+'-lg'
-            case 2:
-                return ext+'-md'
-            case 3:
-                return ext
-            case 4:
-                return ext+'-sm'
-            default:
-                return ''
-        }
+
+        return (n < 5) ? 'backblur' + (n + 1) : ''
     }
 
     return(<div className="text-center items-center w-2/3 my-5 mx-auto p-5 rounded-lg shadow-md bg-slate-800/50 ring-1 ring-white/10">
@@ -52,9 +35,8 @@ function Item ({ id }) {
             </div>
         }
         
-
         <div className="flex justify-center items-center mt-4">
-            <span>Intentos</span>
+            <span>Trys</span>
             {items[id].try.map((t,i) =>
                 <div key={i} className={`${getColor(t)} rounded-md w-8 h-8 text-lg font-semibold select-none ml-4`}>
                     {(t === 'Unplayed') ? '?' : null}
