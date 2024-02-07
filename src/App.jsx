@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import React, { useContext } from "react"
 import ItemGrid from "./components/ItemGrid"
 import Item from "./components/Item"
 import { getColor, getStatus } from "./utils"

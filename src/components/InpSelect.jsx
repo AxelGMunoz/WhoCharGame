@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 
 import Select from 'react-select'
 import { shuffle, getNames, status, getActualPos } from '../utils'

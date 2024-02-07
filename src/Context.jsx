@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 import { images, status } from "./utils"
 
 export const UserContext = createContext()
