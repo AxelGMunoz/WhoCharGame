@@ -22,7 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-.eslintrc.cjs
-postcss.config.js
-vite.config.js
