@@ -24,7 +24,8 @@ function InpSelect({charID}) {
   useEffect(()=>{
     if (isLoading) {
       const selChar = selectRef.current.getValue()[0].value
-      const localItem = JSON.parse(localStorage.getItem('items'))
+      const JSONlocalItem = JSON.parse(localStorage.getItem('items'))
+      const localItem = [].concat(JSONlocalItem)
       (selChar == charID) ? updateItemLocal(charID, getActualPos(localItem[charID]), status.Success)
       : updateItemLocal(charID, getActualPos(localItem[charID]), status.Failed)
       selectRef.current.clearValue()
