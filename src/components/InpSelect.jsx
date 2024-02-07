@@ -24,9 +24,9 @@ function InpSelect({charID}) {
   useEffect(()=>{
     if (isLoading) {
       const selChar = selectRef.current.getValue()[0].value
-      const localItem = JSON.parse(localStorage.getItem('items'))[charID]
-      (selChar == charID) ? updateItemLocal(charID, getActualPos(localItem), status.Success)
-      : updateItemLocal(charID, getActualPos(localItem), status.Failed)
+      const localItem = JSON.parse(localStorage.getItem('items'))
+      (selChar == charID) ? updateItemLocal(charID, getActualPos(localItem[charID]), status.Success)
+      : updateItemLocal(charID, getActualPos(localItem[charID]), status.Failed)
       selectRef.current.clearValue()
       setIsLoading(false)
       setIsSearchable(true)
