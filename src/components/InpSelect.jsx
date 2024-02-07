@@ -9,7 +9,7 @@ function InpSelect({charID}) {
   const [isDisabled, setIsDisabled] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const { updateItemLocal } = useContext(UserContext)
+  const { items, updateItemLocal } = useContext(UserContext)
 
   const selectRef = useRef()
 
@@ -23,11 +23,9 @@ function InpSelect({charID}) {
 
   useEffect(()=>{
     if (isLoading) {
-      const selChar = selectRef.current.getValue()[0].value
-      const JSONlocalItem = JSON.parse(localStorage.getItem('items'))
-      const localItem = [].concat(JSONlocalItem)
-      (selChar == charID) ? updateItemLocal(charID, getActualPos(localItem[charID]), status.Success)
-      : updateItemLocal(charID, getActualPos(localItem[charID]), status.Failed)
+      (selectRef.current.getValue()[0].value == charID)
+      ? updateItemLocal(charID, getActualPos(items[charID]), status.Success)
+      : updateItemLocal(charID, getActualPos(items[charID]), status.Failed)
       selectRef.current.clearValue()
       setIsLoading(false)
       setIsSearchable(true)
