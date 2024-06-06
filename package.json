@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-blur": "^1.1.1",
     "react-dom": "^18.2.0",
-    "react-select": "^5.8.0"
+    "react-select": "^5.8.0",
+    "vite-require": "^0.2.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -24,6 +26,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.34",
+    "standard": "^17.1.0",
     "tailwindcss": "^3.4.1",
     "vite": "^5.0.8"
   }

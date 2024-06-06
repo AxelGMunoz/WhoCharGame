@@ -28,25 +28,3 @@ body {
 .react-select__menu {
     @apply !bg-gray-800
 }
-
-.backblur1 {
-    /*-webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);*/
-    @apply backdrop-blur-xl
-}
-
-.backblur2 {
-    @apply backdrop-blur-lg
-}
-
-.backblur3 {
-    @apply backdrop-blur-md
-}
-
-.backblur4 {
-    @apply backdrop-blur
-}
-
-.backblur5 {
-    @apply backdrop-blur-sm
-}
