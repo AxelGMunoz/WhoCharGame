@@ -1,7 +1,7 @@
 {
   "name": "whochargame",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,8 +13,7 @@
     "react": "^18.2.0",
     "react-blur": "^1.1.1",
     "react-dom": "^18.2.0",
-    "react-select": "^5.8.0",
-    "vite-require": "^0.2.3"
+    "react-select": "^5.8.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -28,6 +27,7 @@
     "postcss": "^8.4.34",
     "standard": "^17.1.0",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vite-require": "^0.2.3"
   }
 }

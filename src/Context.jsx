@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from 'react'
 
-import { chars, status } from './utils'
+import { chars, status, structNewItem } from './utils'
 
 export const UserContext = createContext()
 
@@ -18,42 +18,32 @@ function Context ({ children }) {
 
   // Actualiza un item
   const updateItem = (id, pos, value) => {
-    // Clonar item a actualizar
-    const changeItem = Object.assign({}, items[id])
+    // Item a actualizar
+    const changeItem = { ...items[id] }
 
     // Setear el estado de try nuevo
     changeItem.try[pos] = value
 
     // Setear el estado del item
-    // Si es Success, setear a Success
-    // Si no ver si es el último intento, de serlo setear con el mismo valor
-    // Si no significa que todavía puede continuar, dejar el estado del item igual
-    changeItem.status = (value === status.Success)
-      ? status.Success
-      : (pos === 4) ? value : changeItem.status
+    // Si es Success, setear a Success o si es el último intento setear con el mismo valor
+    if (value === status.Success || pos === 4) changeItem.status = value
 
     // Setear los items cambiando el item actualizado
     setItems(items.map(item => (item.id === id) ? changeItem : item))
   }
 
   // Ejecutar sólo si se actualiza la página
+  // Obtener o crear la lista de items segun la cantidad de personajes
   useEffect(() => {
-    // Contenedor de los items
-    let newItems = []
+    let newItems = JSON.parse(window.localStorage.getItem('items')) || []
 
-    // Si no hay items en el localStorage
-    if (JSON.parse(window.localStorage.getItem('items')) == null) {
-      // Crear items según los personajes (chars) en utils.js
-      for (let i = 0; i < chars.length; i++) {
-        newItems.push({
-          id: i,
-          try: [status.Unplayed, status.Unplayed, status.Unplayed, status.Unplayed, status.Unplayed],
-          status: status.Unplayed
-        })
-      }
-    // Si hay items en localStorage
-    } else {
-      newItems = JSON.parse(window.localStorage.getItem('items'))
+    const itemsLength = newItems.length
+    const charsLength = chars.length
+
+    if (itemsLength < charsLength) {
+      newItems = newItems.concat(
+        Array.from({ length: charsLength - itemsLength }, (_, i) => structNewItem(i + itemsLength))
+      )
     }
 
     setItems(newItems)

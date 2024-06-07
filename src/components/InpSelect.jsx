@@ -50,7 +50,7 @@ function InpSelect ({ charID }) {
       isSearchable={isSearchable}
       name='color'
       options={shuffle(getNames())}
-      noOptionsMessage={() => 'Sin resultados'}
+      noOptionsMessage='Sin resultados'
       theme={(theme) => ({
         ...theme,
         borderRadius: 4,

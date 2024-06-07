@@ -16,7 +16,6 @@ body {
     @apply bg-blue-700;
 }
 
-/* BOOKMARK: Trabajo -> Ver */
 .react-select__control {
     @apply !border-gray-600
 }
@@ -27,4 +26,12 @@ body {
 
 .react-select__menu {
     @apply !bg-gray-800
+}
+
+.hiddenChar {
+    @apply text-slate-400 bg-slate-400 font-semibold px-1 rounded-sm;
+}
+
+.hiddenChar:hover {
+    @apply text-slate-800;
 }

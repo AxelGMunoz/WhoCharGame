@@ -1,3 +1,49 @@
+// Para agregar un nuevo personaje
+// 1: Agregar el nombre al array chars
+// 2: Agregar la imagen .jpg a la carpeta assets/chars con el mismo nombre
+
+// Todos los personajes
+export const chars = [
+  'Ash Ketchum',
+  'Lara Croft',
+  'Mario Bros',
+  'Ezio Auditore',
+  'Arthur Morgan',
+  'Samus Aran',
+  'Link',
+  'Leon Scott Kennedy',
+  'Geralt of Rivia',
+  'Gordon Freeman',
+  'Joel Miller',
+  'Master Chief'
+]
+
+// Nombres falsos para rellenar
+const fakeNames = [
+  'Pacman',
+  'Harry Potter',
+  'Sonic',
+  'Prince of Persia',
+  'Marcus Fenix',
+  'Rayman',
+  'Sora',
+  'Zelda',
+  'Dante',
+  'Spyro the Dragon',
+  'Mega Man',
+  'Crash Bandicoot',
+  'Cloud Strife',
+  'Kratos',
+  'Donkey Kong',
+  'Nathan Drake',
+  'Snake'
+]
+
+// Obtener imagen según el personaje
+export function getImage (n) {
+  return require(`./assets/chars/${chars[n]}.jpg`)
+}
+
 // Posibles estados de los items
 export const status = {
   Unplayed: 'Unplayed',
@@ -6,63 +52,27 @@ export const status = {
   Success: 'Success'
 }
 
-// Obtener todos los estados
-export function getStatus () {
-  const arrayStatus = []
-  for (let s = 0; s < Object.keys(status).length; s++) {
-    arrayStatus.push(Object.keys(status)[s])
-  }
-  return arrayStatus
-}
-
 // Obtener el estilo según el estado
-export function getColor (t) {
-  switch (t) {
-    case 'Skipped':
-      return 'bg-orange-500'
-    case 'Failed':
-      return 'bg-red-500'
-    case 'Success':
-      return 'bg-green-500'
-    default:
-      return 'bg-violet-500'
+export const getColor = {
+  Skipped: 'bg-orange-500',
+  Failed: 'bg-red-500',
+  Success: 'bg-green-500',
+  Unplayed: 'bg-violet-500'
+}
+
+// Estructura al generar un nuevo item
+export function structNewItem (n) {
+  return {
+    id: n,
+    try: [status.Unplayed, status.Unplayed, status.Unplayed, status.Unplayed, status.Unplayed],
+    status: status.Unplayed
   }
 }
 
-// Todos los personajes
-export const chars = [
-  'Ash Ketchum',
-  'Lara Croft'
-]
-
-// Nombres falsos para rellenar
-const fakeNames = [
-  'Prueba Jorge'
-]
-
-// Obtener imagen según el personaje
-export function getImage (n) {
-  return require(`./assets/chars/${chars[n].replace(' ', '_')}.jpg`)
-}
-
-// Obtener un array combinao de los personajes y los nombres falsos
+// Obtener un array combinado de los personajes y los nombres falsos
 export function getNames () {
-  const names = []
-
-  // Personajes
-  for (let n = 0; n < chars.length; n++) {
-    names.push({
-      value: n,
-      label: chars[n]
-    })
-  }
-
-  // Nombres falsos
-  for (let n = 0; n < fakeNames.length; n++) {
-    names.push({ value: chars.length + n, label: fakeNames[n] })
-  }
-
-  return names
+  return chars.map((char, index) => ({ value: index, label: char }))
+    .concat(fakeNames.map((name, index) => ({ value: chars.length + index, label: name })))
 }
 
 // Función para mezclar un array
@@ -76,12 +86,5 @@ export function shuffle (item) {
 
 // Obtener la posición del intento actual el item
 export function getActualPos (item) {
-  let n = 0
-  for (let t = 0; t < 5; t++) {
-    if (item.try[t] === status.Unplayed) {
-      break
-    }
-    n++
-  }
-  return n
+  return item.try.indexOf(status.Unplayed)
 }

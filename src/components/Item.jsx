@@ -16,7 +16,7 @@ function Item ({ id }) {
   }
 
   return (
-    <div className='text-center items-center w-2/3 my-5 mx-auto p-5 rounded-lg shadow-md bg-slate-800/50 ring-1 ring-white/10'>
+    <div className='text-center items-center sm:w-2/3 mt-5 mx-auto p-5 rounded-lg shadow-md bg-slate-800/50 ring-1 ring-white/10'>
 
       {// Mostrar nombre del personaje si ya se terminó
         items[id].status !== status.Unplayed &&
@@ -26,7 +26,7 @@ function Item ({ id }) {
         }
 
       {/* Imagen del personaje */}
-      <div className='flex w-8/12 h-[50vh] justify-center mt-2 mx-auto rounded-lg'>
+      <div className='flex w-8/12 max-md:h-2/3 md:h-[45vh] justify-center mt-2 mx-auto rounded-lg'>
         <Blur img={getImage(id)} blurRadius={setBlur()} className='w-full h-full object-cover' />
       </div>
 
@@ -41,7 +41,7 @@ function Item ({ id }) {
       <div className='flex justify-center items-center mt-4'>
         <span>Trys</span>
         {items[id].try.map((t, i) =>
-          <div key={i} className={`${getColor(t)} rounded-md w-8 h-8 text-lg font-semibold select-none ml-4`}>
+          <div key={i} className={`${getColor[t]} rounded-md w-8 h-8 text-lg font-semibold select-none ml-4`}>
             {(t === 'Unplayed') ? '?' : null}
           </div>
         )}
