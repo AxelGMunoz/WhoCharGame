@@ -48,9 +48,8 @@ function InpSelect ({ charID }) {
       isLoading={isLoading}
       isClearable={false}
       isSearchable={isSearchable}
-      name='color'
       options={shuffle(getNames())}
-      noOptionsMessage='Sin resultados'
+      noOptionsMessage={() => 'Sin resultados'}
       theme={(theme) => ({
         ...theme,
         borderRadius: 4,

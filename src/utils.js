@@ -84,7 +84,7 @@ export function shuffle (item) {
   return item
 }
 
-// Obtener la posición del intento actual el item
+// Obtener la posición del intento actual del item
 export function getActualPos (item) {
   return item.try.indexOf(status.Unplayed)
 }
