@@ -7,7 +7,7 @@ function ItemGrid ({ values }) {
   const { setSelItem } = useContext(UserContext)
 
   return (
-    <div className='max-md:mt-5 text-center rounded-md px-4 pt-1 pb-2 select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500'>
+    <div className='max-md:mt-5 text-center rounded-md px-4 pt-1 pb-2 h-fit select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500'>
 
       {/* Titulo y Botón de intento */}
       <div className='flex my-1 justify-between'>
