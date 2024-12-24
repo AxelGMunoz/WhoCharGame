@@ -9,8 +9,3 @@ Juego simple basado en GuessThegame, en el que dada una imagen desenfocada hay q
 - react-select
 - react-blur
 - vite-require
-
-## Instalar:
-- Tailwind: https://tailwindcss.com/docs/guides/vite
-- npm i react-select react-blur --save
-- npm i vite-require -D
