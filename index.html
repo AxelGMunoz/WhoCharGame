@@ -1,13 +1,84 @@
 <!doctype html>
-<html lang="es">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WhoCharGame</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+  <body class="bg-slate-900">
+    <header class="flex justify-center items-center h-20 border-b border-slate-700">
+      <h1 class="text-4xl font-bold">
+        WhoCharGame
+      </h1>
+    </header>
+    
+    <main class="space-y-3 mt-3">
+      <section class="flex items-center justify-center space-x-4">
+        <div class="flex items-center space-x-1">
+          <div class="bg-violet-500 rounded-md text-xs font-semibold select-none h-6 w-6 place-content-center text-center">?</div>
+          <span>Unplayed:</span>
+          <span class="text-lg font-bold">0</span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <div class="bg-orange-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
+          <span>Skipped:</span>
+          <span class="text-lg font-bold">0</span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <div class="bg-red-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
+          <span>Failed:</span>
+          <span class="text-lg font-bold">0</span>
+        </div>
+        <div class="flex items-center space-x-1">
+          <div class="bg-green-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
+          <span>Success:</span>
+          <span class="text-lg font-bold">1</span>
+        </div>
+
+        <button class="bg-blue-500 text-white rounded-md px-4 py-2 ml-5">RESET</button>
+      </section>
+
+      <section class="grid grid-cols-4 gap-2 px-4">
+        <div class="max-md:mt-5 text-center rounded-md px-4 pt-1 pb-2 h-fit select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500">
+          <div class="flex my-1 justify-between">
+            <div class="place-content-center text-center text-slate-400 bg-slate-400 font-semibold px-1.5 rounded-sm hover:bg-slate-900 hover:text-white">
+              Ash Ketchum
+            </div>
+            <button class="bg-blue-500 rounded-md py-1 px-2 text-sm hover:cursor-pointer">Try</button>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="grid gap-4 grid-cols-5 items-center">
+              <div class="bg-green-500 rounded-md w-8 h-8 text-xs font-semibold py-2"></div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+            </div>
+            <div class="bg-green-500 items-center ml-6 px-2 rounded-sm">Success</div>
+          </div>
+        </div>
+        
+        <div class="text-center rounded-md px-4 pt-1 pb-2 h-fit select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500">
+          <div class="flex my-1 justify-between">
+            <div>
+              Character #2
+            </div>
+            <button class="bg-blue-500 rounded-md py-1 px-2 text-sm hover:cursor-pointer">Try</button>
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="grid gap-4 grid-cols-5 items-center">
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+            </div>
+            <div class="bg-violet-500 items-center ml-6 px-2 rounded-sm">Unplayed</div>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
