@@ -1,84 +1,177 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WhoCharGame</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body class="bg-slate-900">
-    <header class="flex justify-center items-center h-20 border-b border-slate-700">
-      <h1 class="text-4xl font-bold">
-        WhoCharGame
-      </h1>
+    <header
+      class="flex justify-center items-center h-20 border-b border-slate-700 gap-2"
+    >
+      <img src="assets/icon.svg" alt="Icon game WhoCharGame" />
+      <h1 class="text-4xl font-bold">WhoCharGame</h1>
     </header>
-    
-    <main class="space-y-3 mt-3">
-      <section class="flex items-center justify-center space-x-4">
-        <div class="flex items-center space-x-1">
-          <div class="bg-violet-500 rounded-md text-xs font-semibold select-none h-6 w-6 place-content-center text-center">?</div>
-          <span>Unplayed:</span>
-          <span class="text-lg font-bold">0</span>
-        </div>
-        <div class="flex items-center space-x-1">
-          <div class="bg-orange-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
-          <span>Skipped:</span>
-          <span class="text-lg font-bold">0</span>
-        </div>
-        <div class="flex items-center space-x-1">
-          <div class="bg-red-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
-          <span>Failed:</span>
-          <span class="text-lg font-bold">0</span>
-        </div>
-        <div class="flex items-center space-x-1">
-          <div class="bg-green-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
-          <span>Success:</span>
-          <span class="text-lg font-bold">1</span>
-        </div>
 
-        <button class="bg-blue-500 text-white rounded-md px-4 py-2 ml-5">RESET</button>
-      </section>
+    <main id="main-content" class="space-y-3 mt-3"></main>
 
-      <section class="grid grid-cols-4 gap-2 px-4">
-        <div class="max-md:mt-5 text-center rounded-md px-4 pt-1 pb-2 h-fit select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500">
-          <div class="flex my-1 justify-between">
-            <div class="place-content-center text-center text-slate-400 bg-slate-400 font-semibold px-1.5 rounded-sm hover:bg-slate-900 hover:text-white">
-              Ash Ketchum
-            </div>
-            <button class="bg-blue-500 rounded-md py-1 px-2 text-sm hover:cursor-pointer">Try</button>
-          </div>
-          <div class="flex justify-between items-center">
-            <div class="grid gap-4 grid-cols-5 items-center">
-              <div class="bg-green-500 rounded-md w-8 h-8 text-xs font-semibold py-2"></div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-            </div>
-            <div class="bg-green-500 items-center ml-6 px-2 rounded-sm">Success</div>
-          </div>
-        </div>
+    <script>
+      let currentTab = "ItemsGrid"
+      let characters = []
+
+      // Cargar personajes al inicializar
+      async function loadCharacters() {
+        try {
+          const response = await fetch('characters.json')
+          characters = await response.json()
+        } catch (error) {
+          console.error('Error cargando personajes:', error)
+        }
+      }
+
+      async function loadContent(tab) {
+        currentTab = tab
+        const res = await fetch(`${tab}.html`)
+        const html = await res.text()
+        document.getElementById("main-content").innerHTML = html
         
-        <div class="text-center rounded-md px-4 pt-1 pb-2 h-fit select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500">
-          <div class="flex my-1 justify-between">
-            <div>
-              Character #2
+        // Inicializar lógica específica según el tab
+        if (tab === 'ItemsGrid') {
+          initializeItemsGrid()
+        } else if (tab === 'GameG') {
+          initializeGuessGame()
+        }
+      }
+
+      // Función para inicializar la lista de personajes
+      function initializeItemsGrid() {
+        const grid = document.getElementById('characters-grid')
+        grid.innerHTML = ''
+
+        characters.forEach(character => {
+          const characterCard = document.createElement('div')
+          characterCard.className = 'text-center rounded-md px-4 pt-1 pb-2 h-fit select-none shadow-md bg-slate-800/50 ring-1 ring-white/10 hover:ring-indigo-500'
+          
+          characterCard.innerHTML = `
+            <div class="flex my-1 justify-between">
+              <div class="place-content-center text-center text-slate-400 bg-slate-400 font-semibold px-1.5 rounded-sm hover:bg-slate-900 hover:text-white">
+                ${character.name}
+              </div>
+              <button onclick="startGame('${character.id}')" class="bg-blue-500 rounded-md py-1 px-2 text-sm hover:cursor-pointer">
+                Try
+              </button>
             </div>
-            <button class="bg-blue-500 rounded-md py-1 px-2 text-sm hover:cursor-pointer">Try</button>
-          </div>
-          <div class="flex justify-between items-center">
-            <div class="grid gap-4 grid-cols-5 items-center">
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
-              <div class="bg-violet-500 rounded-md w-8 h-8 text-xs font-semibold py-2">?</div>
+            <div class="flex justify-between items-center">
+              <div class="grid gap-1 grid-cols-5 items-center">
+                <div class="bg-violet-500 rounded-md w-6 h-6 text-xs font-semibold grid place-content-center">?</div>
+                <div class="bg-violet-500 rounded-md w-6 h-6 text-xs font-semibold grid place-content-center">?</div>
+                <div class="bg-violet-500 rounded-md w-6 h-6 text-xs font-semibold grid place-content-center">?</div>
+                <div class="bg-violet-500 rounded-md w-6 h-6 text-xs font-semibold grid place-content-center">?</div>
+                <div class="bg-violet-500 rounded-md w-6 h-6 text-xs font-semibold grid place-content-center">?</div>
+              </div>
+              <div class="bg-violet-500 items-center ml-6 px-2 rounded-sm text-sm">Unplayed</div>
             </div>
-            <div class="bg-violet-500 items-center ml-6 px-2 rounded-sm">Unplayed</div>
-          </div>
-        </div>
-      </section>
-    </main>
+          `
+          
+          grid.appendChild(characterCard)
+        })
+      }
+
+      // Función para iniciar el juego con un personaje específico
+      function startGame(characterId) {
+        const character = characters.find(c => c.id === characterId)
+        if (character) {
+          // Guardar el personaje actual en sessionStorage
+          sessionStorage.setItem('currentCharacter', JSON.stringify(character))
+          // Cambiar al juego de adivinanzas
+          loadContent('GameG')
+        }
+      }
+
+      // Lógica del juego de adivinanzas
+      function initializeGuessGame() {
+        // Obtener el personaje actual desde sessionStorage
+        const currentCharacterData = sessionStorage.getItem('currentCharacter')
+        if (!currentCharacterData) {
+          // Si no hay personaje seleccionado, volver al inicio
+          loadContent('ItemsGrid')
+          return
+        }
+
+        const currentCharacter = JSON.parse(currentCharacterData)
+        const correctAnswer = currentCharacter.name
+        let tries = 0
+        const maxTries = 5
+        const blurLevels = ["blur-xl", "blur-lg", "blur-md", "blur", "blur-0"]
+
+        // Configurar la imagen
+        const img = document.getElementById("charImg")
+        img.src = currentCharacter.image
+
+        // Configurar el select con todos los personajes
+        const guess = document.getElementById("guess")
+        guess.innerHTML = '<option value="">Seleccionar personaje...</option>'
+        characters.forEach(character => {
+          const option = document.createElement('option')
+          option.value = character.name
+          option.textContent = character.name
+          guess.appendChild(option)
+        })
+
+        const triesBoxes = Array.from(document.querySelectorAll("#tries .try"))
+
+        function updateBlur() {
+          const idx = Math.min(tries, blurLevels.length - 1)
+          img.className = "h-full w-full object-cover transition-all duration-500 " + blurLevels[idx]
+        }
+
+        guess.addEventListener("change", () => {
+          if (!guess.value || tries >= maxTries) return
+
+          const currentBox = triesBoxes[tries]
+
+          if (guess.value === correctAnswer) {
+            // correcto → verde y revelar foto
+            currentBox.textContent = "✓"
+            currentBox.className = "try size-9 sm:size-10 rounded-md ring-1 ring-white/10 bg-green-500/90 grid place-content-center font-bold"
+            tries = maxTries // para que no siga contando
+            img.className = "h-full w-full object-cover transition-all duration-500 blur-0"
+            guess.disabled = true // bloquear select
+          } else {
+            // incorrecto → rojo
+            currentBox.textContent = "X"
+            currentBox.className = "try size-9 sm:size-10 rounded-md ring-1 ring-white/10 bg-red-500/90 grid place-content-center font-bold"
+            tries++
+            updateBlur()
+            
+            // Si se acabaron los intentos
+            if (tries >= maxTries) {
+              guess.disabled = true
+            }
+          }
+
+          // TODO: Guardar resultados en localStorage
+        })
+
+        updateBlur()
+      }
+
+      // Función para resetear el progreso
+      function resetProgress() {
+        // TODO: Limpiar localStorage
+      }
+
+      // Inicializar la aplicación
+      async function init() {
+        await loadCharacters()
+        loadContent(currentTab)
+      }
+
+      // Ejecutar cuando se carga la página
+      init()
+    </script>
   </body>
 </html>

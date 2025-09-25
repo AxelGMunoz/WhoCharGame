@@ -1,0 +1,74 @@
+[
+  {
+    "id": "arthur-morgan",
+    "name": "Arthur Morgan",
+    "image": "/assets/chars/Arthur Morgan.jpg",
+    "game": "Red Dead Redemption"
+  },
+  {
+    "id": "ash-ketchum",
+    "name": "Ash Ketchum",
+    "image": "/assets/chars/Ash Ketchum.jpg",
+    "game": "Pokémon"
+  },
+  {
+    "id": "ezio-auditore",
+    "name": "Ezio Auditore",
+    "image": "/assets/chars/Ezio Auditore.jpg",
+    "game": "Assassin's Creed"
+  },
+  {
+    "id": "geralt-of-rivia",
+    "name": "Geralt of Rivia",
+    "image": "/assets/chars/Geralt of Rivia.jpg",
+    "game": "The Witcher"
+  },
+  {
+    "id": "gordon-freeman",
+    "name": "Gordon Freeman",
+    "image": "/assets/chars/Gordon Freeman.jpg",
+    "game": "Half-Life"
+  },
+  {
+    "id": "joel-miller",
+    "name": "Joel Miller",
+    "image": "/assets/chars/Joel Miller.jpg",
+    "game": "The Last of Us"
+  },
+  {
+    "id": "lara-croft",
+    "name": "Lara Croft",
+    "image": "/assets/chars/Lara Croft.jpg",
+    "game": "Tomb Raider"
+  },
+  {
+    "id": "leon-scott-kennedy",
+    "name": "Leon Scott Kennedy",
+    "image": "/assets/chars/Leon Scott Kennedy.jpg",
+    "game": "Resident Evil"
+  },
+  {
+    "id": "link",
+    "name": "Link",
+    "image": "/assets/chars/Link.jpg",
+    "game": "The Legend of Zelda"
+  },
+  {
+    "id": "mario-bros",
+    "name": "Mario Bros",
+    "image": "/assets/chars/Mario Bros.jpg",
+    "game": "Super Mario"
+  },
+  {
+    "id": "master-chief",
+    "name": "Master Chief",
+    "image": "/assets/chars/Master Chief.jpg",
+    "game": "Halo"
+  },
+  {
+    "id": "samus-aran",
+    "name": "Samus Aran",
+    "image": "/assets/chars/Samus Aran.jpg",
+    "game": "Metroid"
+  }
+]

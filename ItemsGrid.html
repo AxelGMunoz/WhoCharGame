@@ -1,0 +1,27 @@
+<section class="flex items-center justify-center space-x-4">
+  <div class="flex items-center space-x-1">
+    <div class="bg-violet-500 rounded-md text-xs font-semibold select-none h-6 w-6 place-content-center text-center">?</div>
+    <span>Unplayed:</span>
+    <span class="text-lg font-bold" id="unplayed-count">0</span>
+  </div>
+  <div class="flex items-center space-x-1">
+    <div class="bg-orange-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
+    <span>Skipped:</span>
+    <span class="text-lg font-bold" id="skipped-count">0</span>
+  </div>
+  <div class="flex items-center space-x-1">
+    <div class="bg-red-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
+    <span>Failed:</span>
+    <span class="text-lg font-bold" id="failed-count">0</span>
+  </div>
+  <div class="flex items-center space-x-1">
+    <div class="bg-green-500 rounded-md text-xs font-semibold select-none h-6 w-6">&nbsp;</div>
+    <span>Success:</span>
+    <span class="text-lg font-bold" id="success-count">0</span>
+  </div>
+  <button class="bg-blue-500 text-white rounded-md px-4 py-2 ml-5" onclick="resetProgress()">RESET</button>
+</section>
+
+<section id="characters-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4 mt-8">
+  <!-- Los personajes se cargarán dinámicamente aquí -->
+</section>
